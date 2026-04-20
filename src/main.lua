@@ -8,6 +8,7 @@ game = rom.game
 modutil = mods["SGG_Modding-ModUtil"]
 local chalk = mods["SGG_Modding-Chalk"]
 local reload = mods["SGG_Modding-ReLoad"]
+---@type AdamantModpackLib
 lib = mods["adamant-ModpackLib"]
 
 local dataDefaults = import("config.lua")
@@ -15,7 +16,14 @@ local config = chalk.auto("config.lua")
 
 local PACK_ID = "speedrun"
 
+---@class RunModsNPCsInternal
+---@field store ManagedStore|nil
+---@field standaloneUi StandaloneRuntime|nil
+---@field RegisterHooks fun()|nil
+---@field DrawTab fun(imgui: table, session: AuthorSession)|nil
+---@field DrawQuickContent fun(imgui: table, session: AuthorSession)|nil
 RunModsNPCsInternal = RunModsNPCsInternal or {}
+---@type RunModsNPCsInternal
 local internal = RunModsNPCsInternal
 
 public.definition = {
